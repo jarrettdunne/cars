@@ -136,11 +136,28 @@
     .hero-bg {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(to right, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.75) 45%, rgba(8,8,8,0.3) 100%),
+        linear-gradient(to right, rgba(6,6,6,0.93) 0%, rgba(6,6,6,0.72) 40%, rgba(6,6,6,0.25) 75%, rgba(6,6,6,0.45) 100%),
         url('alex-shuper-2SEoYHL7mxQ-unsplash.jpg');
       background-size: cover;
-      background-position: center right;
+      background-position: left center;
       background-repeat: no-repeat;
+    }
+    @media (max-width: 680px) {
+      .hero-bg {
+        /* Use a pseudo-element approach via background-size and
+           negative top offset to hard-crop the top 20% of the image */
+        background-position: 37% top;
+        background-size: cover;
+        top: -50%;
+        height: 150%;
+        background-image:
+          linear-gradient(to bottom,
+            rgba(6,6,6,0.55) 0%,
+            rgba(6,6,6,0.35) 35%,
+            rgba(6,6,6,0.75) 70%,
+            rgba(6,6,6,0.95) 100%),
+          url('alex-shuper-2SEoYHL7mxQ-unsplash.jpg');
+      }
     }
     .hero-grid {
       position: absolute; inset: 0;
