@@ -6,7 +6,7 @@
   <title>Santana Racing Services — Auto Repair Austin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -21,7 +21,7 @@
       --accent:       #e03030;
       --accent-dk:    #b82222;
       --accent-glow:  rgba(224,48,48,0.2);
-      --font-display: 'Rajdhani', sans-serif;
+      --font-display: Helvetica, Arial, sans-serif;
       --font-body:    'DM Sans', sans-serif;
       --radius-sm: 4px;
       --radius-md: 8px;
@@ -58,11 +58,13 @@
       padding: 0 var(--pad);
     }
 
+    .a { font-style: italic; }
+
     .label {
       font-family: var(--font-display);
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
     }
@@ -71,6 +73,7 @@
       font-family: var(--font-display);
       font-weight: 700;
       line-height: 1.05;
+      letter-spacing: -0.01em;
     }
 
     @keyframes fadeUp {
@@ -101,7 +104,7 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; }
+    .nav-logo { font-family: var(--font-display); font-size: 2rem; font-weight: 700; transition: font-size 0.15s ease; }
     .nav-logo .a { color: var(--accent); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
@@ -179,10 +182,10 @@
       padding-left: calc(var(--pad) + 24px);
       max-width: 700px;
     }
-    .hero-eyebrow { margin-bottom: 1rem; }
-    .hero-title { font-size: clamp(3rem, 9vw, 5.5rem); margin-bottom: 1.5rem; }
+    .hero-eyebrow { margin-bottom: 0.65rem; }
+    .hero-title { font-size: clamp(3rem, 9vw, 5.5rem); margin-bottom: 1.1rem; }
     .hero-title .red { color: var(--accent); }
-    .hero-body { font-size: 0.95rem; color: var(--muted); max-width: 420px; margin-bottom: 2.25rem; line-height: 1.75; }
+    .hero-body { font-size: 0.95rem; color: var(--muted); max-width: 420px; margin-bottom: 1.75rem; line-height: 1.7; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
     .hero-social {
       position: absolute; right: var(--pad); top: 50%; transform: translateY(-50%);
@@ -243,24 +246,27 @@
       right: 0;
       background: linear-gradient(-90deg, var(--bg-2), transparent);
     }
+    .brands-viewport {
+      overflow: hidden;
+      width: 100%;
+      cursor: grab;
+    }
+    .brands-viewport:active { cursor: grabbing; }
     .brands-track {
       display: flex;
       align-items: center;
       gap: 3.5rem;
       width: max-content;
-      animation: marquee 28s linear infinite;
-    }
-    .brands-track:hover { animation-play-state: paused; }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+      flex-wrap: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
     }
     .brand-item {
       display: flex;
       align-items: center;
       justify-content: center;
       height: 36px;
-      flex-shrink: 0;
+      flex: 0 0 auto;
     }
     .brand-item img {
       height: 30px;
@@ -270,12 +276,13 @@
       filter: brightness(0) invert(1);
       opacity: 0.28;
       transition: opacity 0.2s;
+      pointer-events: none;
     }
     .brand-item img:hover { opacity: 0.75; }
 
     /* SERVICES */
     #services { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--bg); }
-    .section-header { margin-bottom: 3rem; }
+    .section-header { margin-bottom: 2.25rem; }
     .section-header .label { margin-bottom: 0.6rem; }
     .section-header .h-display { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 0.75rem; }
     .section-header p { font-size: 0.92rem; color: var(--muted); max-width: 500px; }
@@ -360,6 +367,45 @@
     .about-badge .n { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; line-height: 1; }
     .about-badge .l { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
 
+    .cred-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1.75rem;
+    }
+    .cred-item {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.9rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .cred-icon {
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .cred-name { font-family: var(--font-display); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; }
+    .cred-sub { font-size: 0.74rem; color: var(--muted); margin-top: 0.15rem; }
+
+    .proficiency-block { margin-top: 2rem; }
+    .proficiency-block .label { margin-bottom: 1rem; display: block; }
+    .prof-tags {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .prof-tag {
+      font-family: var(--font-display);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--muted);
+      background: var(--bg-3);
+    }
+
     /* CONTACT */
     #contact {
       padding: clamp(4rem, 8vw, 7rem) 0;
@@ -426,7 +472,7 @@
 <body>
 
   <header id="nav" role="banner">
-    <div class="nav-logo">Santana <span class="a">Racing</span> Services</div>
+    <div class="nav-logo">SANTANA<span class="a">RACING</span></div>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
@@ -442,7 +488,7 @@
     <div class="hero-content">
       <p class="label hero-eyebrow fade-up d1">Austin's Performance Shop</p>
       <h1 class="h-display hero-title fade-up d2">
-        <span class="red">Santana Racing</span><br />Built to<br />Perform
+        <span class="red">SANTANA<span class="a">RACING</span></span><br />Built to<br />Perform
       </h1>
       <p class="hero-body fade-up d3">
         From track prep to street builds, our race-experienced technicians push
@@ -465,45 +511,27 @@
   </section>
 
   <div id="brands" aria-label="Vehicles we service">
-    <!-- No container wrapper — track must be full bleed for seamless loop -->
-    <div class="brands-track" aria-hidden="true">
-      <span class="brand-item"><img src="car-logos/alfa-romeo-alt.svg" alt="Alfa Romeo" /></span>
-      <span class="brand-item"><img src="car-logos/audi.svg" alt="Audi" /></span>
-      <span class="brand-item"><img src="car-logos/bentley.svg" alt="Bentley" /></span>
-      <span class="brand-item"><img src="car-logos/bmw.svg" alt="BMW" /></span>
-      <span class="brand-item"><img src="car-logos/ferrari.svg" alt="Ferrari" /></span>
-      <span class="brand-item"><img src="car-logos/honda.svg" alt="Honda" /></span>
-      <span class="brand-item"><img src="car-logos/jeep-alt.svg" alt="Jeep" /></span>
-      <span class="brand-item"><img src="car-logos/lexus.svg" alt="Lexus" /></span>
-      <span class="brand-item"><img src="car-logos/lotus.svg" alt="Lotus" /></span>
-      <span class="brand-item"><img src="car-logos/maserati.svg" alt="Maserati" /></span>
-      <span class="brand-item"><img src="car-logos/maybach.svg" alt="Maybach" /></span>
-      <span class="brand-item"><img src="car-logos/mclaren-alt.svg" alt="McLaren" /></span>
-      <span class="brand-item"><img src="car-logos/mercedes-benz.svg" alt="Mercedes-Benz" /></span>
-      <span class="brand-item"><img src="car-logos/peugeot.svg" alt="Peugeot" /></span>
-      <span class="brand-item"><img src="car-logos/ram-alt.svg" alt="RAM" /></span>
-      <span class="brand-item"><img src="car-logos/rolls-royce.svg" alt="Rolls-Royce" /></span>
-      <span class="brand-item"><img src="car-logos/toyota.svg" alt="Toyota" /></span>
-      <span class="brand-item"><img src="car-logos/volkswagen.svg" alt="Volkswagen" /></span>
-      <!-- Duplicate set for seamless loop -->
-      <span class="brand-item"><img src="car-logos/alfa-romeo-alt.svg" alt="Alfa Romeo" /></span>
-      <span class="brand-item"><img src="car-logos/audi.svg" alt="Audi" /></span>
-      <span class="brand-item"><img src="car-logos/bentley.svg" alt="Bentley" /></span>
-      <span class="brand-item"><img src="car-logos/bmw.svg" alt="BMW" /></span>
-      <span class="brand-item"><img src="car-logos/ferrari.svg" alt="Ferrari" /></span>
-      <span class="brand-item"><img src="car-logos/honda.svg" alt="Honda" /></span>
-      <span class="brand-item"><img src="car-logos/jeep-alt.svg" alt="Jeep" /></span>
-      <span class="brand-item"><img src="car-logos/lexus.svg" alt="Lexus" /></span>
-      <span class="brand-item"><img src="car-logos/lotus.svg" alt="Lotus" /></span>
-      <span class="brand-item"><img src="car-logos/maserati.svg" alt="Maserati" /></span>
-      <span class="brand-item"><img src="car-logos/maybach.svg" alt="Maybach" /></span>
-      <span class="brand-item"><img src="car-logos/mclaren-alt.svg" alt="McLaren" /></span>
-      <span class="brand-item"><img src="car-logos/mercedes-benz.svg" alt="Mercedes-Benz" /></span>
-      <span class="brand-item"><img src="car-logos/peugeot.svg" alt="Peugeot" /></span>
-      <span class="brand-item"><img src="car-logos/ram-alt.svg" alt="RAM" /></span>
-      <span class="brand-item"><img src="car-logos/rolls-royce.svg" alt="Rolls-Royce" /></span>
-      <span class="brand-item"><img src="car-logos/toyota.svg" alt="Toyota" /></span>
-      <span class="brand-item"><img src="car-logos/volkswagen.svg" alt="Volkswagen" /></span>
+    <div class="brands-viewport" id="brandsViewport">
+      <div class="brands-track" id="brandsTrack">
+        <span class="brand-item"><img src="car-logos/alfa-romeo-alt.svg" alt="Alfa Romeo" /></span>
+        <span class="brand-item"><img src="car-logos/audi.svg" alt="Audi" /></span>
+        <span class="brand-item"><img src="car-logos/bentley.svg" alt="Bentley" /></span>
+        <span class="brand-item"><img src="car-logos/bmw.svg" alt="BMW" /></span>
+        <span class="brand-item"><img src="car-logos/ferrari.svg" alt="Ferrari" /></span>
+        <span class="brand-item"><img src="car-logos/honda.svg" alt="Honda" /></span>
+        <span class="brand-item"><img src="car-logos/jeep-alt.svg" alt="Jeep" /></span>
+        <span class="brand-item"><img src="car-logos/lexus.svg" alt="Lexus" /></span>
+        <span class="brand-item"><img src="car-logos/lotus.svg" alt="Lotus" /></span>
+        <span class="brand-item"><img src="car-logos/maserati.svg" alt="Maserati" /></span>
+        <span class="brand-item"><img src="car-logos/maybach.svg" alt="Maybach" /></span>
+        <span class="brand-item"><img src="car-logos/mclaren-alt.svg" alt="McLaren" /></span>
+        <span class="brand-item"><img src="car-logos/mercedes-benz.svg" alt="Mercedes-Benz" /></span>
+        <span class="brand-item"><img src="car-logos/peugeot.svg" alt="Peugeot" /></span>
+        <span class="brand-item"><img src="car-logos/ram-alt.svg" alt="RAM" /></span>
+        <span class="brand-item"><img src="car-logos/rolls-royce.svg" alt="Rolls-Royce" /></span>
+        <span class="brand-item"><img src="car-logos/toyota.svg" alt="Toyota" /></span>
+        <span class="brand-item"><img src="car-logos/volkswagen.svg" alt="Volkswagen" /></span>
+      </div>
     </div>
   </div>
 
@@ -515,35 +543,86 @@
         <p>Race-grade work for the street and the track — every build treated like it's going for podium.</p>
       </div>
       <div class="services-grid">
-        <div class="service-card"><p class="service-num">01</p><div class="service-icon" aria-hidden="true">🔧</div><p class="service-name">Performance Oil Service</p><p class="service-desc">Race-spec full synthetic oils and filters. Viscosity matched to your engine's demands — street or strip.</p></div>
-        <div class="service-card"><p class="service-num">02</p><div class="service-icon" aria-hidden="true">🛞</div><p class="service-name">Tires & Brakes</p><p class="service-desc">Track-day brake upgrades, stainless lines, big brake kits, corner balancing, and race alignment setups.</p></div>
-        <div class="service-card"><p class="service-num">03</p><div class="service-icon" aria-hidden="true">⚙️</div><p class="service-name">Engine Builds & Repair</p><p class="service-desc">Forced induction, naturally aspirated builds, head work, cam swaps, and full race engine assembly.</p></div>
-        <div class="service-card"><p class="service-num">04</p><div class="service-icon" aria-hidden="true">🏎️</div><p class="service-name">Suspension & Handling</p><p class="service-desc">Coilover installs, sway bars, subframe bracing, geometry tuning, and full corner-weight setup.</p></div>
-        <div class="service-card"><p class="service-num">05</p><div class="service-icon" aria-hidden="true">🔋</div><p class="service-name">ECU Tuning & Electrical</p><p class="service-desc">Dyno tuning, standalone ECU installs, data logging, wiring harness builds, and launch control setup.</p></div>
-        <div class="service-card"><p class="service-num">06</p><div class="service-icon" aria-hidden="true">🔍</div><p class="service-name">Pre-Race Inspection</p><p class="service-desc">Full safety checks, tech inspection prep, fluid flushes, and race-day readiness sign-off.</p></div>
+        <div class="service-card"><div class="service-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><p class="service-name">Performance Oil Service</p><p class="service-desc">Race-spec full synthetic oils and filters. Viscosity matched to your engine's demands — street or strip.</p></div>
+        <div class="service-card"><div class="service-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg></div><p class="service-name">Tires & Brakes</p><p class="service-desc">Track-day brake upgrades, stainless lines, big brake kits, corner balancing, and race alignment setups.</p></div>
+        <div class="service-card"><div class="service-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14M12 2v2m0 16v2M2 12h2m16 0h2"/></svg></div><p class="service-name">Engine Builds & Repair</p><p class="service-desc">Forced induction, naturally aspirated builds, head work, cam swaps, and full race engine assembly.</p></div>
+        <div class="service-card"><div class="service-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><p class="service-name">Suspension & Handling</p><p class="service-desc">Coilover installs, sway bars, subframe bracing, geometry tuning, and full corner-weight setup.</p></div>
+        <div class="service-card"><div class="service-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div><p class="service-name">ECU Tuning & Electrical</p><p class="service-desc">Dyno tuning, standalone ECU installs, data logging, wiring harness builds, and launch control setup.</p></div>
+        <div class="service-card"><div class="service-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><p class="service-name">Pre-Race Inspection</p><p class="service-desc">Full safety checks, tech inspection prep, fluid flushes, and race-day readiness sign-off.</p></div>
       </div>
     </div>
   </section>
 
   <section id="about" aria-labelledby="about-title">
     <div class="container">
+      <div class="section-header">
+        <p class="label">Who We Are</p>
+        <h2 class="h-display" id="about-title" style="font-size:clamp(2rem,5vw,3rem);">Credentials &amp; Expertise</h2>
+        <p>Two decades of race-level experience backed by industry certifications and hands-on mastery of the platforms that matter.</p>
+      </div>
       <div class="about-grid">
         <div>
-          <p class="label">Who We Are</p>
-          <h2 class="h-display" id="about-title" style="font-size:clamp(2rem,5vw,3rem);margin:0.6rem 0 0;">Race-proven.<br />Street-ready.</h2>
-          <p class="about-body">Santana Racing Services was born on the track and built in Austin. Since 2005, we've been wringing every last tenth out of street cars, time attack builds, and full race prep. Our team has competed at every level — so when your car rolls into our bay, it's in the hands of people who've actually been there.</p>
-          <div class="about-stats">
-            <div class="stat-block"><div class="stat-number">20+</div><div class="stat-label">Years in business</div></div>
-            <div class="stat-block"><div class="stat-number">8k+</div><div class="stat-label">Builds completed</div></div>
-            <div class="stat-block"><div class="stat-number">ASE</div><div class="stat-label">Certified techs</div></div>
-            <div class="stat-block"><div class="stat-number">5★</div><div class="stat-label">Avg. Google rating</div></div>
+          <p class="label" style="display:block;margin-bottom:0.75rem;">Certifications</p>
+          <div class="cred-grid">
+            <div class="cred-item">
+              <div class="cred-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+              <div><div class="cred-name">ASE Master Technician</div><div class="cred-sub">All eight A-series certifications</div></div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+              <div><div class="cred-name">ASE Advanced Engine Performance</div><div class="cred-sub">L1 &amp; L2 specialist certifications</div></div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+              <div><div class="cred-name">NASA / SCCA Tech Inspector</div><div class="cred_sub">Certified for road course &amp; time attack</div></div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+              <div><div class="cred-name">Snap-on Diagnostic Certified</div><div class="cred-sub">ZEUS &amp; VERUS Pro platforms</div></div>
+            </div>
+          </div>
+
+          <div class="proficiency-block">
+            <span class="label">ECU &amp; Tuning Platforms</span>
+            <div class="prof-tags">
+              <span class="prof-tag">Haltech</span>
+              <span class="prof-tag">AEM Infinity</span>
+              <span class="prof-tag">MoTeC M1</span>
+              <span class="prof-tag">EcuMaster</span>
+              <span class="prof-tag">Cobb Accessport</span>
+              <span class="prof-tag">HP Tuners</span>
+              <span class="prof-tag">EFI Live</span>
+            </div>
+          </div>
+
+          <div class="proficiency-block">
+            <span class="label">Technical Proficiencies</span>
+            <div class="prof-tags">
+              <span class="prof-tag">Dyno Tuning</span>
+              <span class="prof-tag">Data Acquisition</span>
+              <span class="prof-tag">Wiring Harness Fabrication</span>
+              <span class="prof-tag">Forced Induction</span>
+              <span class="prof-tag">Corner Weighting</span>
+              <span class="prof-tag">Race Alignment</span>
+              <span class="prof-tag">Welding &amp; Fabrication</span>
+              <span class="prof-tag">Brake Bias Tuning</span>
+            </div>
           </div>
         </div>
-        <div class="about-visual">
-          <div class="about-visual-inner">
-            <div class="about-placeholder"><span aria-hidden="true">🚗</span>Replace with your shop photo</div>
+
+        <div>
+          <p class="label" style="display:block;margin-bottom:0.75rem;">By the Numbers</p>
+          <div class="about-stats" style="margin-top:0;">
+            <div class="stat-block"><div class="stat-number">20+</div><div class="stat-label">Years in business</div></div>
+            <div class="stat-block"><div class="stat-number">8k+</div><div class="stat-label">Builds completed</div></div>
+            <div class="stat-block"><div class="stat-number">ASE</div><div class="stat-label">Master certified techs</div></div>
+            <div class="stat-block"><div class="stat-number">5★</div><div class="stat-label">Avg. Google rating</div></div>
           </div>
-          <div class="about-badge"><div class="n">20+</div><div class="l">Yrs Experience</div></div>
+          <div class="about-visual" style="margin-top:1.5rem;">
+            <div class="about-visual-inner">
+              <div class="about-placeholder">Replace with your shop photo</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -556,15 +635,15 @@
           <p class="label">Get in Touch</p>
           <h2 class="h-display" id="contact-title" style="font-size:clamp(2rem,4vw,2.75rem);margin:0.6rem 0 0;">Let's build<br />something fast.</h2>
           <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">📍</div>
+            <div class="contact-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div><p class="contact-item-label">Address</p><p class="contact-item-value">1234 South Congress Ave<br />Austin, TX 78704</p></div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">📞</div>
+            <div class="contact-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.05 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
             <div><p class="contact-item-label">Phone</p><p class="contact-item-value"><a href="tel:+15125550100" style="color:var(--accent)">(512) 555-0100</a></p></div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">🕐</div>
+            <div class="contact-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
             <div><p class="contact-item-label">Hours</p><p class="contact-item-value">Mon–Fri: 8am – 6pm<br />Sat: 9am – 3pm</p></div>
           </div>
         </div>
@@ -634,9 +713,80 @@
 
   <script>
     const nav = document.getElementById('nav');
+    const navLogo = nav.querySelector('.nav-logo');
+    const LOGO_MAX = 2, LOGO_MIN = 1.5, SCROLL_RANGE = 160;
     window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
+      const y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 40);
+      const t = Math.min(y / SCROLL_RANGE, 1);
+      navLogo.style.fontSize = (LOGO_MAX - (LOGO_MAX - LOGO_MIN) * t) + 'rem';
     });
+
+    (function () {
+      const viewport = document.getElementById('brandsViewport');
+      const track = document.getElementById('brandsTrack');
+      const SPEED = 0.8;
+
+      // Clone items until track is at least 3x viewport width
+      function fillTrack() {
+        const originals = Array.from(track.children);
+        while (track.offsetWidth < viewport.offsetWidth * 3) {
+          originals.forEach(el => track.appendChild(el.cloneNode(true)));
+        }
+      }
+
+      // Width of one original set = offsetLeft of first clone
+      function getSetWidth() {
+        const origCount = parseInt(track.dataset.origCount, 10);
+        return track.children[origCount].offsetLeft;
+      }
+
+      let x = 0;
+      let dragging = false;
+      let lastX = 0;
+      let velocity = 0;
+      let setWidth = 0;
+
+      function init() {
+        track.dataset.origCount = track.children.length;
+        fillTrack();
+        setWidth = getSetWidth();
+        requestAnimationFrame(tick);
+      }
+
+      function tick() {
+        if (!dragging) {
+          velocity += (SPEED - velocity) * 0.08; // ease toward auto-speed after drag release
+          x -= velocity;
+        }
+        if (x <= -setWidth) x += setWidth;
+        if (x > 0) x -= setWidth;
+        track.style.transform = `translateX(${x}px)`;
+        requestAnimationFrame(tick);
+      }
+
+      viewport.addEventListener('pointerdown', e => {
+        dragging = true;
+        lastX = e.clientX;
+        velocity = 0;
+        viewport.setPointerCapture(e.pointerId);
+      });
+
+      viewport.addEventListener('pointermove', e => {
+        if (!dragging) return;
+        const dx = e.clientX - lastX;
+        x += dx;
+        velocity = -dx;
+        lastX = e.clientX;
+      });
+
+      viewport.addEventListener('pointerup', () => { dragging = false; });
+      viewport.addEventListener('pointercancel', () => { dragging = false; velocity = 0; });
+
+      window.addEventListener('resize', () => { setWidth = getSetWidth(); });
+
+      init();
+    })();
   </script>
 </body>
 </html>
